@@ -35,7 +35,6 @@ class FadeInView extends React.Component {
       <Animated.View // Special animatable View
         style={{
           ...this.props.style,
-          flex: 1,
           position: 'relative',
           top,
           opacity: fadeAnim, // Bind opacity to animated value

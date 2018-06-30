@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import Categories from './src/pages/Categories';
+import Checklist from './src/pages/Checklist';
 
 export default class App extends Component {
   state={
-    page: 'Categories',
+    page: 'Categorie',
     selectedCategory: null,
   }
 
@@ -12,7 +13,7 @@ export default class App extends Component {
     const { page, selectedCategory } = this.state;
     return (
       <View style={{ flex: 1 }}>
-        {page === 'Categories' ? <Categories /> : ''}
+        {page === 'Categories' ? <Categories /> : <Checklist />}
       </View>
     );
   }
