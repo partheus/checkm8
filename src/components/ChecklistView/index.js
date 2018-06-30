@@ -12,10 +12,11 @@ import styles from './style';
 
 class ChecklistView extends React.Component {
   render() {
-    const listItems = this.props.checklistData.map(({ label, value }) => (
+    const listLabels = Object.keys(this.props.checklistData);
+    const listItems = listLabels.map(label => (
       <ListItem
         itemLabel={label}
-        value={value}
+        value={this.props.checklistData[label]}
         key={label}
         onChange={this.props.updateList(label)}
       />
@@ -44,13 +45,13 @@ class ChecklistView extends React.Component {
 }
 ChecklistView.defaultProps = {
   selectedCategory: 'category1',
-  checklistData: [],
+  checklistData: {},
   onBack: () => {},
   updateList: () => {},
 };
 ChecklistView.propTypes = {
   selectedCategory: PropTypes.string,
-  checklistData: PropTypes.arrayOf(PropTypes.object),
+  checklistData: PropTypes.object,
   onBack: PropTypes.func,
   updateList: PropTypes.func,
 };
