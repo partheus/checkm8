@@ -26,7 +26,7 @@ class Checklist extends Component {
   updateList=key => () => {
     const updatedList = { ...this.state.checklistData, [key]: !this.state.checklistData[key] };
     console.log(key, updatedList);
-    this.storeData(this.props.selectedCategory, updatedList);
+    this.storeData(this.props.selectedCategory, updatedList).then(this.fetchList);
   }
 
 
@@ -58,7 +58,7 @@ transform=dataObject => Object.keys(dataObject).map(item => (
 render() {
   return (
     <AnimView style={{ flex: 1 }}>
-      <ChecklistView checklistData={this.state.checklistData} onBack={this.props.onBack} updateList={this.updateList} />
+      <ChecklistView selectedCategory={this.props.selectedCategory} checklistData={this.state.checklistData} onBack={this.props.onBack} updateList={this.updateList} />
     </AnimView>
   );
 }

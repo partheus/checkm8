@@ -14,13 +14,13 @@ class CategoryCard extends React.Component {
       <TouchableOpacity onPress={this.props.onClick(categoryName)}>
         <View style={styles.container}>
           <View style={styles.card}>
-            <Text>
+            <Text style={styles.cardText}>
               {categoryName}
             </Text>
           </View>
           <View style={styles.quote}>
-            <Text>
-              {quote}
+            <Text style={styles.quoteText}>
+              {`--${quote}`}
             </Text>
           </View>
         </View>

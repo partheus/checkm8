@@ -20,7 +20,7 @@ export default class App extends Component {
     render() {
       const { page, selectedCategory } = this.state;
       return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: '#171a22' }}>
           {page === 'Categories' ? <Categories onCardClick={this.onCardClick} /> : <Checklist selectedCategory={selectedCategory} onBack={this.onBackButtonClick} />}
         </View>
       );

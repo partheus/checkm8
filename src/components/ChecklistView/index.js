@@ -25,12 +25,12 @@ class ChecklistView extends React.Component {
       <View style={styles.container}>
         <View style={styles.checklistHeader}>
           <TouchableHighlight onPress={this.props.onBack} style={styles.backBtn}>
-            <Text style={{ fontWeight: 'bold' }}>
-                Back
+            <Text style={{ fontWeight: 'bold', fontSize: 25 }}>
+                &lt;
             </Text>
           </TouchableHighlight>
           <View style={{ flex: 1, alignItems: 'center' }}>
-            <Text>
+            <Text style={styles.headerText}>
               {this.props.selectedCategory}
             </Text>
           </View>

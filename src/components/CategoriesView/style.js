@@ -5,10 +5,14 @@ const styles = {
 
   },
   headerView: {
-    flex: 1, justifyContent: 'center', alignItems: 'center', borderWidth: 2, borderColor: 'black',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerText: {
-    color: '#213123',
+    color: '#dbdbdb',
+    fontFamily: 'Raleway-Bold',
+    fontSize: 25,
   },
   sliderView: {
     flex: 5,
@@ -16,7 +20,6 @@ const styles = {
   scrollView: {
     flex: 1,
     flexDirection: 'row',
-    borderWidth: 2,
     paddingVertical: 60,
   },
 };

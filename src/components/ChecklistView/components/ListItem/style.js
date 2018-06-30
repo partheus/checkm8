@@ -3,7 +3,14 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: 'black',
+    borderBottomColor: '#dbdbdb',
+    marginLeft: 5,
+  },
+  itemLabelText: {
+    color: '#dbdbdb',
+    fontFamily: 'Raleway-Bold',
+    fontSize: 20,
+    marginLeft: 10,
   },
 };
 

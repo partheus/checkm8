@@ -19,9 +19,9 @@ class ListItem extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-          <CheckBox value={this.state.checked} onValueChange={this.props.onChange} />
+          <CheckBox value={this.props.value} onValueChange={this.props.onChange} />
           <View style={styles.itemLabel}>
-            <Text>
+            <Text style={styles.itemLabelText}>
               {this.props.itemLabel}
             </Text>
           </View>

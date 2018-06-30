@@ -14,15 +14,15 @@ class FadeInView extends React.Component {
         this.state.fadeAnim,
         {
           toValue: 1,
-          duration: 800,
+          duration: 750,
         },
       ),
       Animated.timing(
         this.state.top,
         {
           toValue: 0,
-          easing: Easing.elastic(1),
-          duration: 400,
+          easing: Easing.elastic(3),
+          duration: 750,
         },
       ),
     ]).start();

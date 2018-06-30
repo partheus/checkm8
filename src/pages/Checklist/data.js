@@ -1,30 +1,39 @@
 export default {
   Documents: {
     sampleDocumentsItem: false,
+    sampleDocumentsItem2: false,
   },
   Medication: {
     sampleMedicationItem: false,
+    sampleMedicationItem2: false,
   },
   Apparel: {
     sampleApparelItem: false,
+    sampleApparelItem2: false,
   },
   Electronics: {
     sampleElectronicsItem: false,
+    sampleElectronicsItem2: false,
   },
   Toiletries: {
     sampleToiletriesItem: false,
+    sampleToiletriesItem2: false,
   },
   Kitchenware: {
     sampleKitchenwareItem: false,
+    sampleKitchenwareItem2: false,
   },
   'Food Items': {
     sampleFoodItem: false,
+    sampleFoodItem2: false,
   },
   Stationery: {
     sampleStationeryItem: false,
+    sampleStationeryItem2: false,
   },
   Misc: {
     sampleMiscItem: false,
+    sampleMiscItem2: false,
   },
 };
 
