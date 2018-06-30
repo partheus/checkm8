@@ -34,9 +34,11 @@ class ListItem extends React.Component {
 ListItem.defaultProps = {
   itemLabel: 'label',
   value: false,
+  onChange: () => {},
 };
 ListItem.propTypes = {
   itemLabel: PropTypes.string,
   value: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 export default ListItem;

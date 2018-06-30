@@ -12,6 +12,15 @@ class Checklist extends Component {
 
 
   componentDidMount() {
+    // this.storeData('Documents', sta.Documents);
+    // this.storeData('Medication', sta.Medication);
+    // this.storeData('Apparel', sta.Apparel);
+    // this.storeData('Electronics', sta.Electronics);
+    // this.storeData('Toiletries', sta.Toiletries);
+    // this.storeData('Kitchenware', sta.Kitchenware);
+    // this.storeData('Food Items', sta['Food Items']);
+    // this.storeData('Stationery', sta.Stationery);
+    // this.storeData('Misc', sta.Misc);
     this.fetchList();
   }
 
@@ -23,9 +32,10 @@ class Checklist extends Component {
       });
   }
 
-  updateList=(key) => {
-    const updatedList = { ...this.state.checklistData, [key]: !this.state.checklistData[key] };
-    this.storeData(this.props.selectedCategory, updatedList).then(this.fetchList);
+  updateList=key => () => {
+    // const updatedList = { ...this.state.checklistData, [key]: !this.state.checklistData[key] };
+    console.log(key);
+    // this.storeData(this.props.selectedCategory, updatedList).then(this.fetchList);
   }
 
 
@@ -57,7 +67,7 @@ transform=dataObject => Object.keys(dataObject).map(item => (
 render() {
   return (
     <AnimView style={{ flex: 1 }}>
-      <ChecklistView checklistData={this.state.checklistData} />
+      <ChecklistView checklistData={this.state.checklistData} onBack={this.props.onBack} updateList={this.updateList} />
     </AnimView>
   );
 }
@@ -65,9 +75,11 @@ render() {
 
 Checklist.defaultProps = {
   selectedCategory: 'Misc',
+  onBack: () => {},
 };
 Checklist.propTypes = {
   selectedCategory: PropTypes.string,
+  onBack: PropTypes.func,
 };
 
 export default Checklist;

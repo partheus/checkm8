@@ -16,6 +16,7 @@ class CategoriesView extends React.Component {
         categoryName={categoryName}
         quote={quote}
         key={categoryName}
+        onClick={this.props.onCardClick}
       />
     ));
     return (
@@ -40,15 +41,20 @@ class CategoriesView extends React.Component {
 }
 CategoriesView.defaultProps = {
   categories: [
-    { categoryName: 'category1', quote: 'quote1' },
-    { categoryName: 'category2', quote: 'quote2' },
-    { categoryName: 'category3', quote: 'quote3' },
-    { categoryName: 'category4', quote: 'quote4' },
-    { categoryName: 'category5', quote: 'quote5' },
-    { categoryName: 'category6', quote: 'quote6' },
+    { categoryName: 'Documents', quote: 'quote1' },
+    { categoryName: 'Medication', quote: 'quote2' },
+    { categoryName: 'Apparel', quote: 'quote3' },
+    { categoryName: 'Electronics', quote: 'quote4' },
+    { categoryName: 'Toiletries', quote: 'quote5' },
+    { categoryName: 'Kitchenware', quote: 'quote6' },
+    { categoryName: 'Food Items', quote: 'quote4' },
+    { categoryName: 'Stationery', quote: 'quote5' },
+    { categoryName: 'Misc', quote: 'quote6' },
   ],
+  onCardClick: () => {},
 };
 CategoriesView.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
+  onCardClick: PropTypes.func,
 };
 export default CategoriesView;
