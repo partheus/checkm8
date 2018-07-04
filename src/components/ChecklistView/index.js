@@ -5,6 +5,8 @@ import {
   View,
   ScrollView,
   TouchableHighlight,
+  Modal,
+  TextInput,
 } from 'react-native';
 import ListItem from './components/ListItem';
 import styles from './style';
@@ -20,7 +22,7 @@ class ChecklistView extends React.Component {
         key={label}
         onChange={this.props.updateList(label)}
         deleteItem={this.props.deleteItem(label)}
-        editItem={this.props.editItem}
+        editItem={this.props.setModal(label)}
       />
     ));
     return (
@@ -35,12 +37,66 @@ class ChecklistView extends React.Component {
             <Text style={styles.headerText}>
               {this.props.selectedCategory}
             </Text>
+            <TouchableHighlight onPress={this.props.toggleCreateMode}>
+              <Text>
+                  +
+              </Text>
+            </TouchableHighlight>
           </View>
         </View>
         <ScrollView style={styles.checklistBody}>
           {listItems}
         </ScrollView>
-
+        {
+          this.props.modalContent
+          && (
+          <Modal
+            transparent
+            onRequestClose={this.props.setModal(null)}
+            animationType="slide"
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalBody}>
+                <Text style={styles.modalText}>
+                      Enter the new label
+                </Text>
+                <TextInput
+                  defaultValue={this.props.modalContent}
+                  style={styles.modalText}
+                  underlineColorAndroid={styles.modalText.color}
+                  returnKeyType="done"
+                  onSubmitEditing={this.props.editItem(this.props.modalContent)}
+                />
+              </View>
+            </View>
+          </Modal>
+          )
+        }
+        {
+          this.props.createMode
+          && (
+          <Modal
+            transparent
+            onRequestClose={this.props.toggleCreateMode}
+            animationType="slide"
+          >
+            <View style={styles.modalContainer}>
+              <View style={styles.modalBody}>
+                <Text style={styles.modalText}>
+                      Enter the new item
+                </Text>
+                <TextInput
+                  placeholder="Type an item you want to track"
+                  style={styles.modalText}
+                  underlineColorAndroid={styles.modalText.color}
+                  returnKeyType="done"
+                  onSubmitEditing={this.props.createItem}
+                />
+              </View>
+            </View>
+          </Modal>
+          )
+        }
       </View>
     );
   }
