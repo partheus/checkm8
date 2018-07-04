@@ -11,7 +11,7 @@ class CategoryCard extends React.Component {
   render() {
     const { categoryName, quote } = this.props;
     return (
-      <TouchableOpacity onPress={this.props.onClick(categoryName)}>
+      <TouchableOpacity onPress={this.props.onClick}>
         <View style={styles.container}>
           <View style={styles.card}>
             <Text style={styles.cardText}>

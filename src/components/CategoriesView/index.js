@@ -16,7 +16,7 @@ class CategoriesView extends React.Component {
         categoryName={categoryName}
         quote={quote}
         key={categoryName}
-        onClick={this.props.onCardClick}
+        onClick={this.props.onCardClick(categoryName)}
       />
     ));
     return (

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 import Categories from './src/pages/Categories';
 import Checklist from './src/pages/Checklist';
 
-export default class App extends Component {
+class App extends Component {
   state={
     page: 'Categories',
     selectedCategory: null,
@@ -26,3 +27,10 @@ export default class App extends Component {
       );
     }
 }
+
+export default createStackNavigator({
+  Categories,
+  Checklist,
+}, {
+  initialRouteName: 'Categories',
+});

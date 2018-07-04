@@ -8,6 +8,7 @@ import sta from './data';
 class Checklist extends Component {
   state={
     checklistData: {},
+    selectedCategory: this.props.navigation.getParam('selectedCategory', 'Documents'),
   }
 
 
@@ -16,7 +17,7 @@ class Checklist extends Component {
   }
 
   fetchList=() => {
-    this.retrieveData(this.props.selectedCategory)
+    this.retrieveData(this.state.selectedCategory)
       .then((data) => {
         const checklistData = JSON.parse(data);
         this.setState({ checklistData });
@@ -26,7 +27,7 @@ class Checklist extends Component {
   updateList=key => () => {
     const updatedList = { ...this.state.checklistData, [key]: !this.state.checklistData[key] };
     console.log(key, updatedList);
-    this.storeData(this.props.selectedCategory, updatedList).then(this.fetchList);
+    this.storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
   }
 
 
@@ -58,7 +59,7 @@ transform=dataObject => Object.keys(dataObject).map(item => (
 render() {
   return (
     <AnimView style={{ flex: 1 }}>
-      <ChecklistView selectedCategory={this.props.selectedCategory} checklistData={this.state.checklistData} onBack={this.props.onBack} updateList={this.updateList} />
+      <ChecklistView selectedCategory={this.state.selectedCategory} checklistData={this.state.checklistData} onBack={this.props.onBack} updateList={this.updateList} />
     </AnimView>
   );
 }
