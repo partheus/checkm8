@@ -19,6 +19,8 @@ class ChecklistView extends React.Component {
         value={this.props.checklistData[label]}
         key={label}
         onChange={this.props.updateList(label)}
+        deleteItem={this.props.deleteItem(label)}
+        editItem={this.props.editItem}
       />
     ));
     return (

@@ -49,6 +49,21 @@ class Checklist extends Component {
     }
   }
 
+  createItem=(key) => {
+    const updatedList = { ...this.state.checklistData, [key]: false };
+    this.storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
+  }
+
+  deleteItem=key => () => {
+    const updatedList = { ...this.state.checklistData, [key]: undefined };
+    this.storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
+  }
+
+  editItem=(oldValue, newValue) => {
+    const updatedList = { ...this.state.checklistData, [newValue]: this.state.checklistData[oldValue], [oldValue]: undefined };
+    this.storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
+  }
+
 transform=dataObject => Object.keys(dataObject).map(item => (
   {
     label: item,
@@ -59,7 +74,7 @@ transform=dataObject => Object.keys(dataObject).map(item => (
 render() {
   return (
     <AnimView style={{ flex: 1 }}>
-      <ChecklistView selectedCategory={this.state.selectedCategory} checklistData={this.state.checklistData} onBack={this.props.onBack} updateList={this.updateList} />
+      <ChecklistView selectedCategory={this.state.selectedCategory} checklistData={this.state.checklistData} onBack={this.props.onBack} updateList={this.updateList} createItem={this.createItem} deleteItem={this.deleteItem} editItem={this.editItem} />
     </AnimView>
   );
 }

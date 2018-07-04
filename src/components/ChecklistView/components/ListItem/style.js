@@ -6,6 +6,12 @@ const styles = {
     borderBottomColor: '#dbdbdb',
     marginLeft: 5,
   },
+  itemLabel: {
+    flex: 2,
+  },
+  actionBtn: {
+    flex: 1,
+  },
   itemLabelText: {
     color: '#dbdbdb',
     fontFamily: 'Raleway-Bold',

@@ -4,6 +4,7 @@ import {
   Text,
   View,
   CheckBox,
+  TouchableOpacity,
 } from 'react-native';
 import styles from './style';
 
@@ -25,6 +26,16 @@ class ListItem extends React.Component {
               {this.props.itemLabel}
             </Text>
           </View>
+          <TouchableOpacity style={styles.actionBtn} onPress={this.props.editItem}>
+            <Text>
+                Edit
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionBtn} onPress={this.props.deleteItem}>
+            <Text>
+                Delete
+            </Text>
+          </TouchableOpacity>
         </View>
       );
     }
