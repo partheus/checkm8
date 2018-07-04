@@ -1,22 +1,29 @@
 export default {
   container: {
     flex: 1,
+    backgroundColor: '#171a22',
   },
   checklistHeader: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 30,
-    marginBottom: 50,
+
   },
   checklistBody: {
     flex: 1,
+    marginTop: 50,
   },
-  backBtn: {
-    position: 'absolute',
+  createBtn: {
     backgroundColor: '#385673',
-    padding: 5,
+    padding: 10,
     margin: 10,
-    borderRadius: 5,
+    borderRadius: 25,
+  },
+  createBtnText: {
+    color: '#dbdbdb',
+    fontFamily: 'Raleway-Bold',
+    fontSize: 25,
   },
   headerText: {
     color: '#dbdbdb',
@@ -39,5 +46,8 @@ export default {
     color: 'white',
     fontFamily: 'Raleway-Bold',
     alignItems: 'stretch',
+  },
+  modalPlaceholder: {
+    color: '#cccccc',
   },
 };

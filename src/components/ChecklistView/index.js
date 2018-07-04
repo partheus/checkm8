@@ -4,7 +4,7 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableHighlight,
+  TouchableOpacity,
   Modal,
   TextInput,
 } from 'react-native';
@@ -27,23 +27,6 @@ class ChecklistView extends React.Component {
     ));
     return (
       <View style={styles.container}>
-        <View style={styles.checklistHeader}>
-          <TouchableHighlight onPress={this.props.onBack} style={styles.backBtn}>
-            <Text style={{ fontWeight: 'bold', fontSize: 25 }}>
-                &lt;
-            </Text>
-          </TouchableHighlight>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <Text style={styles.headerText}>
-              {this.props.selectedCategory}
-            </Text>
-            <TouchableHighlight onPress={this.props.toggleCreateMode}>
-              <Text>
-                  +
-              </Text>
-            </TouchableHighlight>
-          </View>
-        </View>
         <ScrollView style={styles.checklistBody}>
           {listItems}
         </ScrollView>
@@ -87,6 +70,7 @@ class ChecklistView extends React.Component {
                 </Text>
                 <TextInput
                   placeholder="Type an item you want to track"
+                  placeholderTextColor={styles.modalPlaceholder.color}
                   style={styles.modalText}
                   underlineColorAndroid={styles.modalText.color}
                   returnKeyType="done"

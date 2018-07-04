@@ -3,9 +3,17 @@ import PropTypes from 'prop-types';
 import { AsyncStorage } from 'react-native';
 import AnimView from '../../components/Shared/AnimView';
 import ChecklistView from '../../components/ChecklistView';
+import ActionButton from '../../components/Shared/ActionButton';
 // import sta from './data';
 
 class Checklist extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.getParam('selectedCategory', 'Checklist'),
+    headerRight: (
+      <ActionButton text="Create New" onPress={navigation.getParam('toggleCreateMode')} />
+    ),
+  });
+
   state={
     checklistData: {},
     selectedCategory: this.props.navigation.getParam('selectedCategory', 'Documents'),
@@ -16,6 +24,7 @@ class Checklist extends Component {
 
   componentDidMount() {
     this.fetchList();
+    this.props.navigation.setParams({ toggleCreateMode: this.toggleCreateMode });
   }
 
   setModal=content => () => {

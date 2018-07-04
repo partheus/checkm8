@@ -27,12 +27,12 @@ class ListItem extends React.Component {
             </Text>
           </View>
           <TouchableOpacity style={styles.actionBtn} onPress={this.props.editItem}>
-            <Text>
+            <Text style={styles.actionBtnText}>
                 Edit
             </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.actionBtn} onPress={this.props.deleteItem}>
-            <Text>
+            <Text style={styles.actionBtnText}>
                 Delete
             </Text>
           </TouchableOpacity>

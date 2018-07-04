@@ -18,9 +18,9 @@ class Categories extends Component {
 }
 
 Categories.defaultProps = {
-  onCardClick: () => {},
+  navigation: {},
 };
 Categories.propTypes = {
-  onCardClick: PropTypes.func,
+  navigation: PropTypes.object,
 };
 export default Categories;
