@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 import Categories from './src/pages/Categories';
 import Checklist from './src/pages/Checklist';
 
+const RootStack = createStackNavigator({
+  Categories,
+  Checklist,
+}, {
+  initialRouteName: 'Categories',
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: '#171a22',
+    },
+    headerTintColor: '#dbdbdb',
+    headerTitleStyle: {
+      fontFamily: 'Raleway-Bold',
+      fontSize: 25,
+    },
+  },
+});
 export default class App extends Component {
-  state={
-    page: 'Categories',
-    selectedCategory: null,
+  render() {
+    return (
+      <View style={{ flex: 1, backgroundColor: '#171a22' }}>
+        <RootStack />
+      </View>
+    );
   }
-
-  onCardClick=category => () => {
-    this.setState({ page: 'List', selectedCategory: category });
-  }
-
-    onBackButtonClick=() => {
-      this.setState({ page: 'Categories', selectedCategory: null });
-    }
-
-    render() {
-      const { page, selectedCategory } = this.state;
-      return (
-        <View style={{ flex: 1, backgroundColor: '#171a22' }}>
-          {page === 'Categories' ? <Categories onCardClick={this.onCardClick} /> : <Checklist selectedCategory={selectedCategory} onBack={this.onBackButtonClick} />}
-        </View>
-      );
-    }
 }
+
+// export default createStackNavigator({
+//   Categories,
+//   Checklist,
+// }, {
+//   initialRouteName: 'Categories',
+// });

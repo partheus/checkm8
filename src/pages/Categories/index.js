@@ -4,19 +4,23 @@ import CategoriesView from '../../components/CategoriesView';
 import AnimView from '../../components/Shared/AnimView';
 
 class Categories extends Component {
+  viewList=category => () => {
+    this.props.navigation.navigate('Checklist', { selectedCategory: category });
+  }
+
   render() {
     return (
       <AnimView style={{ flex: 1 }}>
-        <CategoriesView onCardClick={this.props.onCardClick} />
+        <CategoriesView onCardClick={this.viewList} />
       </AnimView>
     );
   }
 }
 
 Categories.defaultProps = {
-  onCardClick: () => {},
+  navigation: {},
 };
 Categories.propTypes = {
-  onCardClick: PropTypes.func,
+  navigation: PropTypes.object,
 };
 export default Categories;
