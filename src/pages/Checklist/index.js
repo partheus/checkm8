@@ -66,6 +66,7 @@ class Checklist extends Component {
 
   createItem=(changeEvent) => {
     const key = changeEvent.nativeEvent.text;
+    if (key === '') { return null; }
     const updatedList = { ...this.state.checklistData, [key]: false };
     this.storeData(this.state.selectedCategory, updatedList)
       .then(this.fetchList).then(this.toggleCreateMode);
@@ -78,6 +79,9 @@ class Checklist extends Component {
 
   editItem=oldValue => (changeEvent) => { // TODO: handle label collision
     const newValue = changeEvent.nativeEvent.text;
+    if (newValue === oldValue || newValue === '') {
+      return null;
+    }
     const updatedList = {
       ...this.state.checklistData,
       [newValue]: this.state.checklistData[oldValue],
