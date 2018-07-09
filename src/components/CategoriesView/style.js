@@ -18,7 +18,7 @@ const styles = {
     flex: 5,
   },
   scrollView: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     paddingVertical: 60,
   },

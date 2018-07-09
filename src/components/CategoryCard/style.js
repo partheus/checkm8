@@ -1,7 +1,10 @@
+import { Dimensions } from 'react-native';
+
 const styles = {
   container: {
     flex: 1,
-    width: 391,
+    width: (Dimensions.get('window').width - 20),
+    padding: 10,
     margin: 10,
   },
   card: {
@@ -9,7 +12,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#2b303f',
-    height: 450,
     borderRadius: 10,
     elevation: 10,
   },
