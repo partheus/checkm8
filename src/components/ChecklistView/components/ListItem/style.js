@@ -7,13 +7,12 @@ const styles = {
     marginLeft: 5,
   },
   itemLabel: {
-    flex: 2,
+    flex: 4,
   },
   actionBtn: {
     flex: 1,
-    backgroundColor: '#385673',
     alignItems: 'center',
-    margin: 10,
+    margin: 5,
     borderRadius: 5,
     padding: 5,
   },
