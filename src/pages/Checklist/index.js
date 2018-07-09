@@ -23,7 +23,11 @@ class Checklist extends Component {
 
 
   componentDidMount() {
-    this.fetchList();
+    this.fetchList()
+      .catch(() => {
+        this.storeData(this.state.selectedCategory, {})
+          .then(this.fetchList);
+      });
     this.props.navigation.setParams({ toggleCreateMode: this.toggleCreateMode });
   }
 
@@ -31,13 +35,14 @@ class Checklist extends Component {
     this.setState({ modalContent: content });
   }
 
-  fetchList=() => {
-    this.retrieveData(this.state.selectedCategory)
-      .then((data) => {
-        const checklistData = JSON.parse(data);
-        this.setState({ checklistData });
-      });
-  }
+  fetchList=() => this.retrieveData(this.state.selectedCategory)
+    .then((data) => {
+      if (data === null) {
+        throw new Error('not set');
+      }
+      const checklistData = JSON.parse(data);
+      this.setState({ checklistData });
+    })
 
   updateList=key => () => {
     const updatedList = { ...this.state.checklistData, [key]: !this.state.checklistData[key] };
@@ -60,7 +65,7 @@ class Checklist extends Component {
       return value;
     } catch (error) {
       // Error retrieving data
-      return 'error';
+      alert('error');
     }
   }
 
@@ -77,7 +82,7 @@ class Checklist extends Component {
     this.storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
   }
 
-  editItem=oldValue => (changeEvent) => { // TODO: handle label collision
+  editItem=oldValue => (changeEvent) => {
     const newValue = changeEvent.nativeEvent.text;
     if (newValue === oldValue || newValue === '') {
       return null;
