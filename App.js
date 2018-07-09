@@ -23,16 +23,9 @@ const RootStack = createStackNavigator({
 export default class App extends Component {
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: '#171a22' }}>
+      <View style={{ flex: 1 }}>
         <RootStack />
       </View>
     );
   }
 }
-
-// export default createStackNavigator({
-//   Categories,
-//   Checklist,
-// }, {
-//   initialRouteName: 'Categories',
-// });

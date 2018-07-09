@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { AsyncStorage } from 'react-native';
-import AnimView from '../../components/Shared/AnimView';
+import { AsyncStorage, View } from 'react-native';
 import ChecklistView from '../../components/ChecklistView';
 import ActionButton from '../../components/Shared/ActionButton';
+import newIcon from '../../assets/plus.png';
 // import sta from './data';
 
 class Checklist extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam('selectedCategory', 'Checklist'),
     headerRight: (
-      <ActionButton text="Create New" onPress={navigation.getParam('toggleCreateMode')} />
+      <ActionButton src={newIcon} onPress={navigation.getParam('toggleCreateMode')} />
     ),
   });
 
@@ -109,7 +109,7 @@ transform=dataObject => Object.keys(dataObject).map(item => (
 
   render() {
     return (
-      <AnimView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <ChecklistView
           selectedCategory={this.state.selectedCategory}
           checklistData={this.state.checklistData}
@@ -123,7 +123,7 @@ transform=dataObject => Object.keys(dataObject).map(item => (
           modalContent={this.state.modalContent}
           setModal={this.setModal}
         />
-      </AnimView>
+      </View>
     );
   }
 }

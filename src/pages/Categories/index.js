@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import CategoriesView from '../../components/CategoriesView';
-import AnimView from '../../components/Shared/AnimView';
 
 class Categories extends Component {
   viewList=category => () => {
@@ -10,9 +10,9 @@ class Categories extends Component {
 
   render() {
     return (
-      <AnimView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <CategoriesView onCardClick={this.viewList} />
-      </AnimView>
+      </View>
     );
   }
 }
