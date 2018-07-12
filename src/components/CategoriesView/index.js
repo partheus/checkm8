@@ -42,7 +42,7 @@ class CategoriesView extends React.Component {
           && (
           <Modal
             transparent
-            onRequestClose={this.props.toggleCreateMode}
+            onRequestClose={this.props.setModal(null, null)}
             animationType="slide"
           >
             <CategoryModal
