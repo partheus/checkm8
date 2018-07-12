@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Text,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import { TouchableOpacity, Image } from 'react-native';
 import styles from './style';
+import { noop } from '../../../utils/common';
 
 class ActionButton extends React.Component {
   render() {
@@ -17,5 +14,14 @@ class ActionButton extends React.Component {
   }
 }
 
+ActionButton.defaultProps = {
+  onPress: noop,
+  src: '',
+};
+
+ActionButton.propTypes = {
+  onPress: PropTypes.func,
+  src: PropTypes.string,
+};
 
 export default ActionButton;

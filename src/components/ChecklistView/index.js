@@ -4,13 +4,12 @@ import {
   Text,
   View,
   ScrollView,
-  TouchableOpacity,
   Modal,
   TextInput,
 } from 'react-native';
 import ListItem from './components/ListItem';
 import styles from './style';
-
+import { noop } from '../../utils/common';
 
 class ChecklistView extends React.Component {
   render() {
@@ -86,15 +85,25 @@ class ChecklistView extends React.Component {
   }
 }
 ChecklistView.defaultProps = {
-  selectedCategory: 'category1',
   checklistData: {},
-  onBack: () => {},
-  updateList: () => {},
+  updateList: noop,
+  createItem: noop,
+  deleteItem: noop,
+  editItem: noop,
+  toggleCreateMode: noop,
+  setModal: noop,
+  createMode: false,
+  modalContent: '',
 };
 ChecklistView.propTypes = {
-  selectedCategory: PropTypes.string,
   checklistData: PropTypes.object,
-  onBack: PropTypes.func,
   updateList: PropTypes.func,
+  createItem: PropTypes.func,
+  deleteItem: PropTypes.func,
+  editItem: PropTypes.func,
+  toggleCreateMode: PropTypes.func,
+  setModal: PropTypes.func,
+  createMode: PropTypes.bool,
+  modalContent: PropTypes.string,
 };
 export default ChecklistView;

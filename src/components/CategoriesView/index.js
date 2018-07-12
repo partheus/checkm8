@@ -8,6 +8,7 @@ import {
 import styles from './style';
 import CategoryCard from '../CategoryCard';
 import CategoryModal from './components/CategoryModal';
+import { noop } from '../../utils/common';
 
 class CategoriesView extends React.Component {
   render() {
@@ -44,7 +45,11 @@ class CategoriesView extends React.Component {
             onRequestClose={this.props.toggleCreateMode}
             animationType="slide"
           >
-            <CategoryModal onSubmit={this.props.editCategory(this.props.modalContent.name, this.props.modalContent.quote)} modalContent={this.props.modalContent} />
+            <CategoryModal
+              onSubmit={this.props.editCategory(this.props.modalContent.name,
+                this.props.modalContent.quote)}
+              modalContent={this.props.modalContent}
+            />
           </Modal>
           )
         }
@@ -73,10 +78,24 @@ CategoriesView.defaultProps = {
     { categoryName: 'Stationery', quote: 'quote5' },
     { categoryName: 'Misc', quote: 'quote6' },
   ],
-  onCardClick: () => {},
+  onCardClick: noop,
+  modalContent: {},
+  addCategory: noop,
+  deleteCategory: noop,
+  editCategory: noop,
+  setModal: noop,
+  toggleCreateMode: noop,
+  createMode: false,
 };
 CategoriesView.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
   onCardClick: PropTypes.func,
+  modalContent: PropTypes.object,
+  addCategory: PropTypes.func,
+  deleteCategory: PropTypes.func,
+  editCategory: PropTypes.func,
+  setModal: PropTypes.func,
+  toggleCreateMode: PropTypes.func,
+  createMode: PropTypes.bool,
 };
 export default CategoriesView;

@@ -9,6 +9,7 @@ import {
 import styles from './style';
 import deleteIcon from '../../assets/rubbish-bin.png';
 import editIcon from '../../assets/edit.png';
+import { noop } from '../../utils/common';
 
 class CategoryCard extends React.Component {
   render() {
@@ -38,14 +39,21 @@ class CategoryCard extends React.Component {
     );
   }
 }
+
 CategoryCard.defaultProps = {
   categoryName: 'Category1',
   quote: 'quote1',
   onClick: () => {},
+  onDelete: noop,
+  onEdit: noop,
 };
+
 CategoryCard.propTypes = {
   categoryName: PropTypes.string,
   quote: PropTypes.string,
   onClick: PropTypes.func,
+  onDelete: PropTypes.func,
+  onEdit: PropTypes.func,
 };
+
 export default CategoryCard;

@@ -23,7 +23,7 @@ class ListItem extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-          <CheckBox value={this.props.value} onValueChange={this.props.onChange} style={{ color: 'red' }} />
+          <CheckBox value={this.props.value} onValueChange={this.props.onChange} />
           <View style={styles.itemLabel}>
             <Text style={styles.itemLabelText}>
               {this.props.itemLabel}

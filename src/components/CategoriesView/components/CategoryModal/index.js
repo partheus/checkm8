@@ -7,6 +7,7 @@ import {
   Button,
 } from 'react-native';
 import styles from './style';
+import noop from '../../../../utils/common';
 
 class CategoryModal extends React.Component {
     state={
@@ -63,6 +64,13 @@ CategoryModal.defaultProps = {
     name: '',
     quote: '',
   },
+  onSubmit: noop,
+};
+
+
+CategoryModal.propTypes = {
+  modalContent: PropTypes.object,
+  onSubmit: PropTypes.func,
 };
 
 export default CategoryModal;

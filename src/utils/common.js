@@ -17,6 +17,7 @@ export const retrieveData = async (key) => {
   } catch (error) {
     // Error retrieving data
     alert('error');
+    return 'error';
   }
 };
 
