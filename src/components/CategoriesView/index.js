@@ -4,9 +4,12 @@ import {
   Text,
   View,
   ScrollView,
+  Modal,
+  TextInput,
 } from 'react-native';
 import styles from './style';
 import CategoryCard from '../CategoryCard';
+import CategoryModal from './components/CategoryModal';
 
 class CategoriesView extends React.Component {
   render() {
@@ -21,11 +24,23 @@ class CategoriesView extends React.Component {
     ));
     return (
       <View style={styles.container}>
-        <View style={styles.headerView}>
+        {
+          this.props.createMode
+          && (
+          <Modal
+            transparent
+            onRequestClose={this.props.toggleCreateMode}
+            animationType="slide"
+          >
+            <CategoryModal onSubmit={this.props.addCategory} />
+          </Modal>
+          )
+        }
+        {/* <View style={styles.headerView}>
           <Text style={styles.headerText}>
             Categories
           </Text>
-        </View>
+        </View> */}
         <View style={styles.sliderView}>
           <ScrollView
             pagingEnabled

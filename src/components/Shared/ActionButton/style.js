@@ -1,6 +1,6 @@
 export default {
   button: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
     margin: 10,
     borderRadius: 5,

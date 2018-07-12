@@ -12,11 +12,14 @@ const RootStack = createStackNavigator({
   navigationOptions: {
     headerStyle: {
       backgroundColor: '#171a22',
+      paddingTop: 25,
     },
     headerTintColor: '#dbdbdb',
     headerTitleStyle: {
       fontFamily: 'Raleway-Bold',
       fontSize: 25,
+      textAlign: 'center',
+      flex: 1,
     },
   },
 });

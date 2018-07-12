@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { AsyncStorage, View } from 'react-native';
+import { View, ToastAndroid } from 'react-native';
+import { storeData, retrieveData } from '../../utils/common';
 import ChecklistView from '../../components/ChecklistView';
 import ActionButton from '../../components/Shared/ActionButton';
 import newIcon from '../../assets/plus.png';
-// import sta from './data';
 
 class Checklist extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -25,7 +25,7 @@ class Checklist extends Component {
   componentDidMount() {
     this.fetchList()
       .catch(() => {
-        this.storeData(this.state.selectedCategory, {})
+        storeData(this.state.selectedCategory, {})
           .then(this.fetchList);
       });
     this.props.navigation.setParams({ toggleCreateMode: this.toggleCreateMode });
@@ -35,7 +35,7 @@ class Checklist extends Component {
     this.setState({ modalContent: content });
   }
 
-  fetchList=() => this.retrieveData(this.state.selectedCategory)
+  fetchList=() => retrieveData(this.state.selectedCategory)
     .then((data) => {
       if (data === null) {
         throw new Error('not set');
@@ -46,54 +46,53 @@ class Checklist extends Component {
 
   updateList=key => () => {
     const updatedList = { ...this.state.checklistData, [key]: !this.state.checklistData[key] };
-    console.log(key, updatedList);
-    this.storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
+    storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
   }
 
-
-  storeData = async (categoryName, data) => {
-    try {
-      await AsyncStorage.setItem(categoryName, JSON.stringify(data));
-    } catch (error) {
-      alert(error);
-    }
-  }
-
-  retrieveData = async (categoryName) => {
-    try {
-      const value = await AsyncStorage.getItem(categoryName);
-      return value;
-    } catch (error) {
-      // Error retrieving data
-      alert('error');
-    }
-  }
 
   createItem=(changeEvent) => {
     const key = changeEvent.nativeEvent.text;
-    if (key === '') { return null; }
-    const updatedList = { ...this.state.checklistData, [key]: false };
-    this.storeData(this.state.selectedCategory, updatedList)
-      .then(this.fetchList).then(this.toggleCreateMode);
+    if (key === '') {
+      ToastAndroid.showWithGravity(
+        "Can't track the void, enter something real",
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER,
+      );
+    } else {
+      const updatedList = { ...this.state.checklistData, [key]: false };
+      storeData(this.state.selectedCategory, updatedList)
+        .then(this.fetchList).then(this.toggleCreateMode);
+    }
   }
 
   deleteItem=key => () => {
     const updatedList = { ...this.state.checklistData, [key]: undefined };
-    this.storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
+    storeData(this.state.selectedCategory, updatedList).then(this.fetchList);
   }
 
   editItem=oldValue => (changeEvent) => {
     const newValue = changeEvent.nativeEvent.text;
-    if (newValue === oldValue || newValue === '') {
-      return null;
+    if (newValue === '') {
+      ToastAndroid.showWithGravity(
+        "Can't track the void, enter something real",
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER,
+      );
+    } else if (newValue === oldValue) {
+      ToastAndroid.showWithGravity(
+        'Change is the only constant. Enter a new label or press back to cancel editing',
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER,
+      );
+    } else {
+      const updatedList = {
+        ...this.state.checklistData,
+        [newValue]: this.state.checklistData[oldValue],
+        [oldValue]: undefined,
+      };
+      storeData(this.state.selectedCategory, updatedList)
+        .then(this.fetchList).then(this.setModal(null));
     }
-    const updatedList = {
-      ...this.state.checklistData,
-      [newValue]: this.state.checklistData[oldValue],
-      [oldValue]: undefined,
-    };
-    this.storeData(this.state.selectedCategory, updatedList)
-      .then(this.fetchList).then(this.setModal(null));
   }
 
 
