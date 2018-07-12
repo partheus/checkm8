@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import styles from './style';
 import deleteIcon from '../../assets/rubbish-bin.png';
+import editIcon from '../../assets/edit.png';
 
 class CategoryCard extends React.Component {
   render() {
@@ -24,9 +25,14 @@ class CategoryCard extends React.Component {
             {`- ${quote} -`}
           </Text>
         </View>
-        <TouchableOpacity style={styles.actionBtn} onPress={this.props.onDelete}>
-          <Image resizeMode="cover" source={deleteIcon} />
-        </TouchableOpacity>
+        <View style={styles.actionBar}>
+          <TouchableOpacity style={styles.actionBtn} onPress={this.props.onDelete}>
+            <Image resizeMode="cover" source={deleteIcon} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionBtn} onPress={this.props.onEdit}>
+            <Image resizeMode="cover" source={editIcon} />
+          </TouchableOpacity>
+        </View>
       </View>
 
     );

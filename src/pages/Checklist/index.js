@@ -37,6 +37,7 @@ class Checklist extends Component {
 
   fetchList=() => retrieveData(this.state.selectedCategory)
     .then((data) => {
+      // alert(data);
       if (data === null) {
         throw new Error('not set');
       }

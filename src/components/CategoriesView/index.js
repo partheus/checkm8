@@ -19,6 +19,7 @@ class CategoriesView extends React.Component {
         key={categoryName}
         onClick={this.props.onCardClick(categoryName)}
         onDelete={this.props.deleteCategory(categoryName)}
+        onEdit={this.props.setModal(categoryName, quote)}
       />
     ));
     return (
@@ -32,6 +33,18 @@ class CategoriesView extends React.Component {
             animationType="slide"
           >
             <CategoryModal onSubmit={this.props.addCategory} />
+          </Modal>
+          )
+        }
+        {
+          this.props.modalContent.name
+          && (
+          <Modal
+            transparent
+            onRequestClose={this.props.toggleCreateMode}
+            animationType="slide"
+          >
+            <CategoryModal onSubmit={this.props.editCategory(this.props.modalContent.name, this.props.modalContent.quote)} modalContent={this.props.modalContent} />
           </Modal>
           )
         }

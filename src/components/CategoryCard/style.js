@@ -21,6 +21,7 @@ const styles = {
     flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 10,
   },
   cardText: {
     fontFamily: 'Raleway-Bold',
@@ -32,10 +33,16 @@ const styles = {
     fontFamily: 'Raleway-Italic',
     fontSize: 18,
   },
+  actionBar: {
+    flex: 1,
+    flexDirection: 'row',
+  },
   actionBtn: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(60,60,60,0.5)',
   },
 };
 

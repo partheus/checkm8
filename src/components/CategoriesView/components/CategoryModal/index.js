@@ -10,8 +10,8 @@ import styles from './style';
 
 class CategoryModal extends React.Component {
     state={
-      name: '',
-      quote: '',
+      name: this.props.modalContent.name,
+      quote: this.props.modalContent.quote,
     }
 
     setName=(name) => {
@@ -40,6 +40,7 @@ class CategoryModal extends React.Component {
               underlineColorAndroid={styles.modalText.color}
               returnKeyType="done"
               onChangeText={this.setName}
+              defaultValue={this.props.modalContent.name}
             />
             <TextInput
               placeholder="Enter quote"
@@ -48,13 +49,20 @@ class CategoryModal extends React.Component {
               underlineColorAndroid={styles.modalText.color}
               returnKeyType="done"
               onChangeText={this.setQuote}
+              defaultValue={this.props.modalContent.quote}
             />
-            <Button title="Create" onPress={this.submit} />
+            <Button title="Done" onPress={this.submit} />
           </View>
         </View>
       );
     }
 }
 
+CategoryModal.defaultProps = {
+  modalContent: {
+    name: '',
+    quote: '',
+  },
+};
 
 export default CategoryModal;
