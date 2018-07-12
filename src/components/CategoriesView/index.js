@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Text,
   View,
   ScrollView,
+  Modal,
 } from 'react-native';
 import styles from './style';
 import CategoryCard from '../CategoryCard';
+import CategoryModal from './components/CategoryModal';
+import { noop } from '../../utils/common';
 
 class CategoriesView extends React.Component {
   render() {
@@ -17,15 +19,40 @@ class CategoriesView extends React.Component {
         quote={quote}
         key={categoryName}
         onClick={this.props.onCardClick(categoryName)}
+        onDelete={this.props.deleteCategory(categoryName)}
+        onEdit={this.props.setModal(categoryName, quote)}
       />
     ));
     return (
       <View style={styles.container}>
-        <View style={styles.headerView}>
-          <Text style={styles.headerText}>
-            Categories
-          </Text>
-        </View>
+        {
+          this.props.createMode
+          && (
+          <Modal
+            transparent
+            onRequestClose={this.props.toggleCreateMode}
+            animationType="slide"
+          >
+            <CategoryModal onSubmit={this.props.addCategory} />
+          </Modal>
+          )
+        }
+        {
+          this.props.modalContent.name
+          && (
+          <Modal
+            transparent
+            onRequestClose={this.props.toggleCreateMode}
+            animationType="slide"
+          >
+            <CategoryModal
+              onSubmit={this.props.editCategory(this.props.modalContent.name,
+                this.props.modalContent.quote)}
+              modalContent={this.props.modalContent}
+            />
+          </Modal>
+          )
+        }
         <View style={styles.sliderView}>
           <ScrollView
             pagingEnabled
@@ -51,10 +78,24 @@ CategoriesView.defaultProps = {
     { categoryName: 'Stationery', quote: 'quote5' },
     { categoryName: 'Misc', quote: 'quote6' },
   ],
-  onCardClick: () => {},
+  onCardClick: noop,
+  modalContent: {},
+  addCategory: noop,
+  deleteCategory: noop,
+  editCategory: noop,
+  setModal: noop,
+  toggleCreateMode: noop,
+  createMode: false,
 };
 CategoriesView.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
   onCardClick: PropTypes.func,
+  modalContent: PropTypes.object,
+  addCategory: PropTypes.func,
+  deleteCategory: PropTypes.func,
+  editCategory: PropTypes.func,
+  setModal: PropTypes.func,
+  toggleCreateMode: PropTypes.func,
+  createMode: PropTypes.bool,
 };
 export default CategoriesView;
