@@ -42,7 +42,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: 'rgba(60,60,60,0.5)',
+    borderColor: 'rgba(40,40,40,0.5)',
   },
 };
 
