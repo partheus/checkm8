@@ -53,7 +53,7 @@ class Categories extends Component {
       }
     }
 
-    deleteCategory=(category) => {
+    deleteCategory=category => () => {
       const key = this.state.categories.map(cat => cat.categoryName).indexOf(category);
       const updatedList = [...this.state.categories];
       updatedList.splice(key, 1);

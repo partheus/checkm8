@@ -6,9 +6,11 @@ const styles = {
     width: (Dimensions.get('window').width - 20),
     padding: 10,
     margin: 10,
+    backgroundColor: 'black',
+    borderRadius: 10,
   },
   card: {
-    flex: 3,
+    flex: 6,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#2b303f',
@@ -16,7 +18,7 @@ const styles = {
     elevation: 10,
   },
   quote: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -29,6 +31,11 @@ const styles = {
     color: 'white',
     fontFamily: 'Raleway-Italic',
     fontSize: 18,
+  },
+  actionBtn: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 };
 

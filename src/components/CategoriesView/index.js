@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Text,
   View,
   ScrollView,
   Modal,
-  TextInput,
 } from 'react-native';
 import styles from './style';
 import CategoryCard from '../CategoryCard';
@@ -20,6 +18,7 @@ class CategoriesView extends React.Component {
         quote={quote}
         key={categoryName}
         onClick={this.props.onCardClick(categoryName)}
+        onDelete={this.props.deleteCategory(categoryName)}
       />
     ));
     return (
@@ -36,11 +35,6 @@ class CategoriesView extends React.Component {
           </Modal>
           )
         }
-        {/* <View style={styles.headerView}>
-          <Text style={styles.headerText}>
-            Categories
-          </Text>
-        </View> */}
         <View style={styles.sliderView}>
           <ScrollView
             pagingEnabled
