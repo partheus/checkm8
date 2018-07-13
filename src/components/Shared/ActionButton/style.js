@@ -1,13 +1,19 @@
 export default {
   button: {
-    // flex: 1,
+    flex: 1,
     alignItems: 'center',
-    margin: 10,
-    borderRadius: 5,
-    padding: 5,
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(40,40,40,0.5)',
+  },
+  noBorder: {
+    borderWidth: 0,
   },
   text: {
     color: '#dbdbdb',
     fontFamily: 'Raleway-Bold',
+  },
+  icon: {
+    height: '50%',
   },
 };

@@ -4,8 +4,6 @@ import {
   Text,
   View,
   CheckBox,
-  TouchableOpacity,
-  Image,
 } from 'react-native';
 import styles from './style';
 import ActionButton from '../../../Shared/ActionButton';
@@ -36,8 +34,8 @@ class ListItem extends React.Component {
             {this.props.itemLabel}
           </Text>
         </View>
-        <ActionButton src={editIcon} onPress={this.props.editItem} />
-        <ActionButton src={deleteIcon} onPress={this.toggleDeleteMode} />
+        <ActionButton src={editIcon} onPress={this.props.editItem} border={false} />
+        <ActionButton src={deleteIcon} onPress={this.toggleDeleteMode} border={false} />
       </View>
     )
 
@@ -48,8 +46,8 @@ class ListItem extends React.Component {
            Confirm Delete?
           </Text>
         </View>
-        <ActionButton src={tickIcon} onPress={this.props.deleteItem} />
-        <ActionButton src={crossIcon} onPress={this.toggleDeleteMode} />
+        <ActionButton src={tickIcon} onPress={this.props.deleteItem} border={false} />
+        <ActionButton src={crossIcon} onPress={this.toggleDeleteMode} border={false} />
       </View>
     )
 

@@ -12,7 +12,7 @@ class Categories extends Component {
     title: 'Categories',
     headerLeft: <View />,
     headerRight: (
-      <ActionButton src={newIcon} onPress={navigation.getParam('toggleCreateMode')} />
+      <ActionButton src={newIcon} onPress={navigation.getParam('toggleCreateMode')} border={false} />
     ),
   });
 

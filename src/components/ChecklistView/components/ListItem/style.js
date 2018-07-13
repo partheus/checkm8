@@ -5,6 +5,7 @@ const styles = {
     borderBottomWidth: 1,
     borderBottomColor: '#dbdbdb',
     marginLeft: 5,
+    paddingVertical: 10,
   },
   deleteContainer: {
     flexDirection: 'row',
@@ -13,6 +14,7 @@ const styles = {
     borderBottomWidth: 1,
     borderBottomColor: '#dbdbdb',
     marginLeft: 5,
+    paddingVertical: 10,
   },
   itemLabel: {
     flex: 4,

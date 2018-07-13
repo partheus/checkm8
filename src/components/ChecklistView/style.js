@@ -1,7 +1,6 @@
 export default {
   container: {
     flex: 1,
-    backgroundColor: '#171a22',
   },
   checklistHeader: {
     flexDirection: 'row',

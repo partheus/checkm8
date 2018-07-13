@@ -9,10 +9,11 @@ const RootStack = createStackNavigator({
   Checklist,
 }, {
   initialRouteName: 'Categories',
+  cardStyle: { paddingTop: 20, backgroundColor: '#171a22' },
   navigationOptions: {
     headerStyle: {
       backgroundColor: '#171a22',
-      paddingTop: 25,
+      paddingHorizontal: 10,
     },
     headerTintColor: '#dbdbdb',
     headerTitleStyle: {
@@ -26,7 +27,10 @@ const RootStack = createStackNavigator({
 export default class App extends Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{
+        flex: 1,
+      }}
+      >
         <RootStack />
       </View>
     );
