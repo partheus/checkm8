@@ -7,7 +7,7 @@ import {
   Image,
 } from 'react-native';
 import styles from './style';
-import deleteIcon from '../../assets/rubbish-bin.png';
+import deleteIcon from '../../assets/delete.png';
 import editIcon from '../../assets/edit.png';
 import { noop } from '../../utils/common';
 
@@ -23,7 +23,7 @@ class CategoryCard extends React.Component {
         </TouchableOpacity>
         <View style={styles.quote}>
           <Text style={styles.quoteText}>
-            {`- ${quote} -`}
+            {quote}
           </Text>
         </View>
         <View style={styles.actionBar}>

@@ -6,6 +6,14 @@ const styles = {
     borderBottomColor: '#dbdbdb',
     marginLeft: 5,
   },
+  deleteContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#f44248',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#dbdbdb',
+    marginLeft: 5,
+  },
   itemLabel: {
     flex: 4,
   },
@@ -13,8 +21,8 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     margin: 5,
-    borderRadius: 5,
     padding: 5,
+    // backgroundColor: 'yellow',
   },
   itemLabelText: {
     color: '#dbdbdb',

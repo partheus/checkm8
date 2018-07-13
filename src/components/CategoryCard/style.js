@@ -32,6 +32,7 @@ const styles = {
     color: 'white',
     fontFamily: 'Raleway-Italic',
     fontSize: 18,
+    textAlign: 'center',
   },
   actionBar: {
     flex: 1,
