@@ -19,9 +19,20 @@ const styles = {
   },
   quote: {
     flex: 2,
+    marginTop: 5,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 10,
+  },
+  delete: {
+    flex: 2,
+    marginTop: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    backgroundColor: '#f44248',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   cardText: {
     fontFamily: 'Raleway-Bold',
@@ -32,6 +43,7 @@ const styles = {
     color: 'white',
     fontFamily: 'Raleway-Italic',
     fontSize: 18,
+    textAlign: 'center',
   },
   actionBar: {
     flex: 1,

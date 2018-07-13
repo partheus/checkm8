@@ -3,6 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="colorAccent">#1194f6</item> <!-- for uncheck state -->
+        <item name="android:textColorSecondary">#ffffff</item> <!-- for check state -->
     </style>
 
 </resources>

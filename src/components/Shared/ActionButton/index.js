@@ -7,8 +7,11 @@ import { noop } from '../../../utils/common';
 class ActionButton extends React.Component {
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress} style={styles.button}>
-        <Image source={this.props.src} resizeMode="stretch" />
+      <TouchableOpacity
+        onPress={this.props.onPress}
+        style={this.props.border ? styles.button : { ...styles.button, ...styles.noBorder }}
+      >
+        <Image source={this.props.src} resizeMode="contain" />
       </TouchableOpacity>
     );
   }
@@ -17,11 +20,13 @@ class ActionButton extends React.Component {
 ActionButton.defaultProps = {
   onPress: noop,
   src: '',
+  border: true,
 };
 
 ActionButton.propTypes = {
   onPress: PropTypes.func,
   src: PropTypes.string,
+  border: PropTypes.bool,
 };
 
 export default ActionButton;

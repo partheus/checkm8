@@ -10,7 +10,7 @@ class Checklist extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam('selectedCategory', 'Checklist'),
     headerRight: (
-      <ActionButton src={newIcon} onPress={navigation.getParam('toggleCreateMode')} />
+      <ActionButton src={newIcon} onPress={navigation.getParam('toggleCreateMode')} border={false} />
     ),
   });
 

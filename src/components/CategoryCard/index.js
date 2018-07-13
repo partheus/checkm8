@@ -4,38 +4,67 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import styles from './style';
-import deleteIcon from '../../assets/rubbish-bin.png';
+import ActionButton from '../Shared/ActionButton';
+import deleteIcon from '../../assets/delete.png';
 import editIcon from '../../assets/edit.png';
+import tickIcon from '../../assets/tick.png';
+import crossIcon from '../../assets/cross.png';
 import { noop } from '../../utils/common';
 
 class CategoryCard extends React.Component {
+  state={
+    showDeleteMode: false,
+  }
+
+  toggleDeleteMode=() => {
+    this.setState(prevState => ({ showDeleteMode: !prevState.showDeleteMode }));
+  }
+
+
+  showQuoteAndActions=() => (
+    <React.Fragment>
+      <View style={styles.quote}>
+        <Text style={styles.quoteText}>
+          {this.props.quote}
+        </Text>
+      </View>
+      <View style={styles.actionBar}>
+        <ActionButton src={editIcon} onPress={this.props.onEdit} />
+        <ActionButton src={deleteIcon} onPress={this.toggleDeleteMode} />
+      </View>
+    </React.Fragment>
+  )
+
+  showDeleteDialog=() => (
+    <React.Fragment>
+      <View style={styles.delete}>
+        <Text style={styles.quoteText}>
+        Confirm Delete?
+        </Text>
+      </View>
+      <View style={styles.actionBar}>
+        <ActionButton src={tickIcon} onPress={this.props.onDelete} />
+        <ActionButton src={crossIcon} onPress={this.toggleDeleteMode} />
+      </View>
+    </React.Fragment>
+  )
+
   render() {
-    const { categoryName, quote } = this.props;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this.props.onClick} style={styles.card}>
           <Text style={styles.cardText}>
-            {categoryName}
+            {this.props.categoryName}
           </Text>
         </TouchableOpacity>
-        <View style={styles.quote}>
-          <Text style={styles.quoteText}>
-            {`- ${quote} -`}
-          </Text>
-        </View>
-        <View style={styles.actionBar}>
-          <TouchableOpacity style={styles.actionBtn} onPress={this.props.onDelete}>
-            <Image resizeMode="cover" source={deleteIcon} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionBtn} onPress={this.props.onEdit}>
-            <Image resizeMode="cover" source={editIcon} />
-          </TouchableOpacity>
-        </View>
+        {
+          this.state.showDeleteMode
+            ? this.showDeleteDialog()
+            : this.showQuoteAndActions()
+        }
       </View>
-
     );
   }
 }

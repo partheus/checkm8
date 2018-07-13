@@ -2,7 +2,6 @@ const styles = {
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#171a22',
   },
   headerView: {
     flex: 1,
