@@ -13,7 +13,4 @@ export default {
     color: '#dbdbdb',
     fontFamily: 'Raleway-Bold',
   },
-  icon: {
-    height: '50%',
-  },
 };

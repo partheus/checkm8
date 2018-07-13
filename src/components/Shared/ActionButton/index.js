@@ -11,7 +11,7 @@ class ActionButton extends React.Component {
         onPress={this.props.onPress}
         style={this.props.border ? styles.button : { ...styles.button, ...styles.noBorder }}
       >
-        <Image source={this.props.src} resizeMode="contain" style={styles.icon} />
+        <Image source={this.props.src} resizeMode="contain" />
       </TouchableOpacity>
     );
   }
