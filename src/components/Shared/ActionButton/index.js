@@ -7,7 +7,10 @@ import { noop } from '../../../utils/common';
 class ActionButton extends React.Component {
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress} style={this.props.border ? styles.button : { ...styles.button, ...styles.noBorder }}>
+      <TouchableOpacity
+        onPress={this.props.onPress}
+        style={this.props.border ? styles.button : { ...styles.button, ...styles.noBorder }}
+      >
         <Image source={this.props.src} resizeMode="contain" style={styles.icon} />
       </TouchableOpacity>
     );
