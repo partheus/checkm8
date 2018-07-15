@@ -21,6 +21,16 @@ const styles = {
     flexDirection: 'row',
     paddingVertical: 45,
   },
+  footer: {
+    color: '#dbdbdb',
+    fontFamily: 'Raleway-Bold',
+    fontSize: 13,
+    textAlign: 'center',
+    paddingVertical: 10,
+  },
+  link: {
+    color: '#1194f6',
+  },
 };
 
 export default styles;

@@ -42,7 +42,7 @@ const styles = {
   quoteText: {
     color: 'white',
     fontFamily: 'Raleway-Italic',
-    fontSize: 18,
+    fontSize: 16,
     textAlign: 'center',
   },
   actionBar: {
