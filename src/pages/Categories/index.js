@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, ToastAndroid } from 'react-native';
+import { View, ToastAndroid, Linking } from 'react-native';
 import CategoriesView from '../../components/CategoriesView';
 import { storeData, retrieveData, removeData } from '../../utils/common';
 import ActionButton from '../../components/Shared/ActionButton';
@@ -116,6 +116,10 @@ class Categories extends Component {
     this.props.navigation.navigate('Checklist', { selectedCategory: category });
   }
 
+  openLink=() => {
+    Linking.openURL('https://github.com/partheus/checkm8');
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -129,6 +133,7 @@ class Categories extends Component {
           editCategory={this.editCategory}
           modalContent={this.state.modalContent}
           setModal={this.setModal}
+          openLink={this.openLink}
         />
       </View>
     );

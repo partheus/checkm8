@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
+  Text,
   ScrollView,
   Modal,
 } from 'react-native';
@@ -62,6 +63,13 @@ class CategoriesView extends React.Component {
             {categoryCards}
           </ScrollView>
         </View>
+        <Text style={styles.footer}>
+            Report bugs or contribute to this project on
+          {' '}
+          <Text style={styles.link} onPress={this.props.openLink}>
+            github
+          </Text>
+        </Text>
       </View>
     );
   }
@@ -86,6 +94,7 @@ CategoriesView.defaultProps = {
   setModal: noop,
   toggleCreateMode: noop,
   createMode: false,
+  openLink: noop,
 };
 CategoriesView.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
@@ -97,5 +106,6 @@ CategoriesView.propTypes = {
   setModal: PropTypes.func,
   toggleCreateMode: PropTypes.func,
   createMode: PropTypes.bool,
+  openLink: PropTypes.func,
 };
 export default CategoriesView;
